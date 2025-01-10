@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'docker') {
-                        sh "docker build -t awanmbandi/recommendationservice:latest ."
+                        sh "docker build -t ifeobi/recommendationservice:latest ."
                     }
                 }
             }
@@ -49,7 +49,7 @@ pipeline {
         // Execute SCA/Dependency Test on Service Docker Image
         stage('Snyk SCA Test | Dependencies') {
             steps {
-                sh "${SNYK_HOME}/snyk-linux test --docker awanmbandi/recommendationservice:latest || true" 
+                sh "${SNYK_HOME}/snyk-linux test --docker ifeobi/recommendationservice:latest || true" 
             }
         }
         // Push Service Image to DockerHub
@@ -57,7 +57,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'docker') {
-                        sh "docker push awanmbandi/recommendationservice:latest "
+                        sh "docker push ifeobi/recommendationservice:latest "
                     }
                 }
             }

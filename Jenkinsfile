@@ -13,7 +13,7 @@ pipeline {
         snyk 'Snyk'
     }
     stages {
-        // SonarQube SAST Code Analysis
+         SonarQube SAST Code Analysis
         stage("SonarQube SAST Analysis"){
             steps{
                 withSonarQubeEnv('Sonar-Server') {
